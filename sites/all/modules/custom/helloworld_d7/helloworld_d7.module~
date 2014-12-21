@@ -120,7 +120,7 @@ namespace {
 			'title' => 'Mass Add User Records',
 			'page callback' => 'drupal_get_form',
 			'page arguments' => array('\CVWO\HelloWorld\helloworld_mass_add_form', 1),
-			'file' => 'helloworld_d7_mass_add.inc',
+			'file' => 'helloworld_d7_mass_add_form.inc',
 			'access callback' => 'user_access',
 			'access arguments' => array(HelloWorld\ADD_USER_PERM),
 			'type' => MENU_LOCAL_TASK,
