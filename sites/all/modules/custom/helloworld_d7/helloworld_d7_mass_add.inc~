@@ -58,9 +58,9 @@ namespace CVWO\HelloWorld {
 		foreach ($mass_add as $line)
 		{
 			$new_values = explode(",",$line);
+			drupal_set_message(t("test"));
 			
-			
-			$new_values[1]= isset($new_values[1]) ? $new_values[1] : null; 
+			//$new_values[1]= isset($new_values[1]) ? $new_values[1] : null; 
 			$value = array(
 				'name' => $new_values[0],
 				'email' => $new_values[1],

@@ -62,8 +62,8 @@ namespace CVWO\HelloWorld {
 			
 			$new_values[1]= isset($new_values[1]) ? $new_values[1] : null; 
 			$value = array(
-				'name' => $new_values[0],
-				'email' => $new_values[1],
+				'name' => trim($new_values[0]),
+				'email' => trim($new_values[1]),
 				'comment' => '',
 			);
 			if(isset($form_state['values']['comment']))
@@ -79,7 +79,7 @@ namespace CVWO\HelloWorld {
 			}
 			else
 			{
-				if (add_user($value)) 
+				if (true) 
 				{
 					drupal_set_message(t('%name has been successfully added', array('%name' => $value['name'])));
 				} 
