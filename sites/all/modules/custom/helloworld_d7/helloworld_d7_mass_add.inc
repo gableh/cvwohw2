@@ -21,7 +21,12 @@ namespace CVWO\HelloWorld {
 		} else {
 			$disabled = FALSE;
 		}
+
+
+		 
 		
+		
+		unset($form_state['input']['mass_add']);
 		$form['mass_add'] = array(
 			'#type' => 'textarea',
 			'#title' => t('Mass Add'),
@@ -30,6 +35,7 @@ namespace CVWO\HelloWorld {
 			'#rows' => 3,
 			'#required' => TRUE,
 		);
+
 		
 		
 		$form['comment'] = array(
@@ -53,7 +59,9 @@ namespace CVWO\HelloWorld {
 	 */
 	function helloworld_mass_add_form_submit($form, &$form_state){
 		$mass_add = preg_split("/$\R?^/m",$form_state['values']['mass_add'],-1,PREG_SPLIT_NO_EMPTY);
-		
+		$errordump = array(
+			'errors' => ''
+			);
 		$error = FALSE;
 		foreach ($mass_add as $line)
 		{
@@ -72,27 +80,32 @@ namespace CVWO\HelloWorld {
 			}
 			if(!valid_email_address($value['email']))
 			{	
-				drupal_set_message(t(valid_email_address($value['email'])));
+				drupal_set_message(t('An error (Invalid Email) was encountered while adding %name', array('%name' => $value['name'])),'error');
+				$errordump['errors'] = $errordump['errors'].$line;
+
 				
-				drupal_set_message(t('An error (Invalid Email) was encountered while adding %name', array('%name' => $value['name'])));
 				$error= TRUE;
 			}
 			else
 			{
-				if (true) 
+				if (add_user($value)) 
 				{
 					drupal_set_message(t('%name has been successfully added', array('%name' => $value['name'])));
 				} 
 				else 
 				{
-					drupal_set_message(t('An error was encountered while adding %name', array('%name' => $value['name'])));
+					drupal_set_message(t('An error was encountered while adding %name', array('%name' => $value['name'])),'error');
+					$errordump['errors'] = $errordump['errors'].$line;
+					
 					$error = TRUE;
 				}
 			}
 		}
 		 if ($error) {
+		 	$form_state['values']['mass_add'] = $errordump['errors'];
 			$form_state['rebuild'] = TRUE;
 		} else {
+			drupal_set_message(t($form_state['values']['mass_add']));
 			$form_state['redirect'] = MODULE_NAME;
 		}
 	}
