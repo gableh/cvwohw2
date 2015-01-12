@@ -36,7 +36,9 @@ namespace CVWO\HelloWorld {
 			'#required' => TRUE,
 		);
 
-		
+		$form['upload'] = array(
+  			'#markup' => '<a href = "mass_add_upload">Some text</a>',
+		);
 		
 		$form['comment'] = array(
 			'#type' => 'textarea',
@@ -46,6 +48,8 @@ namespace CVWO\HelloWorld {
 			'#rows' => 1,
 			'#required' => FALSE,
 		);
+		
+		
 		$form['mass_add_submit'] = array(
 			'#type' => 'submit',
 			'#value' => t('Add all'),

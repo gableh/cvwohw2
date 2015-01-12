@@ -110,7 +110,7 @@ namespace {
 		$items[HelloWorld\MODULE_NAME . '/add'] = array(
 			'title' => 'Add User Record',
 			'page callback' => 'drupal_get_form',
-			'page arguments' => array('\CVWO\HelloWorld\helloworld_form', 1),
+			'page arguments' => array('\CVWO\HelloWorld\helloworld_form',1),
 			'file' => 'helloworld_d7_form.inc',
 			'access callback' => 'user_access',
 			'access arguments' => array(HelloWorld\ADD_USER_PERM),
@@ -125,12 +125,20 @@ namespace {
 			'access arguments' => array(HelloWorld\ADD_USER_PERM),
 			'type' => MENU_LOCAL_TASK,
 		);
-	  
+	    $items[HelloWorld\MODULE_NAME . '/upload_mass_add'] = array(
+			'title' => 'Mass Add(upload version)',
+			'page callback' => 'drupal_get_form',
+			'page arguments' => array('\CVWO\HelloWorld\helloworld_upload_mass_add_form', 1),
+			'file' => 'helloworld_d7_upload_mass_add.inc',
+			'access callback' => 'user_access',
+			'access arguments' => array(HelloWorld\ADD_USER_PERM),
+			'type' => MENU_LOCAL_TASK,
+		);
 	  
 		$items[HelloWorld\MODULE_NAME . '/edit/%'] = array(
 			'title' => 'Edit User Record',
 			'page callback' => 'drupal_get_form',
-			'page arguments' => array('\CVWO\HelloWorld\helloworld_form', 1, 2), 		
+			'page arguments' => array('\CVWO\HelloWorld\helloworld_form',1,2), 		
 			'file' => 'helloworld_d7_form.inc',
 			'access callback' => 'user_access',
 			'access arguments' => array(HelloWorld\EDIT_USER_PERM),
