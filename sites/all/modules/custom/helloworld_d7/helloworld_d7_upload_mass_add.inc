@@ -11,7 +11,7 @@ namespace CVWO\HelloWorld {
 		$form['file'] = array(
     		'#type' => 'file',
     		'#title' => t('Text file'),
-    		'#description' => t('Upload a file, allowed extensions: txt'),
+    		'#description' => t('Upload a file, allowed extensions: txt,csv'),
   		);
   		$form['submit'] = array(
     		'#type' => 'submit',
@@ -28,7 +28,7 @@ namespace CVWO\HelloWorld {
     	'file_validate_is_text' => array(),
     
     	// Validate extensions.
-    	'file_validate_extensions' => array('txt'),
+    	'file_validate_extensions' => array('txt csv'),
   		));
   		// If the file passed validation:
   		if ($file) {
