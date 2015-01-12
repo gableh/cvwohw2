@@ -11,5 +11,6 @@ Accomplishments:
    to debug even if it ended up being because mysql 5.5? doesnt allow more than 1 timestamp)
    The $errordump array in the regular mass add,im actually quite proud of this depite its simplicity because i think its actually quite useful,instead of giving back the entire
    text when there might only be 1 or 2 errors after the form rebuild,it returns only the lines that didnt make it into the
-   database for whatever reason.
+   database for whatever reason
+   Creating and debugging all these i suppose.
    
